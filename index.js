@@ -7,6 +7,6 @@ const app = express();
 app.use(bodyparser.json());
 app.use(cors());
 
-//require("./src/routes/amenities")
+require("./src/routes/amenity/amenity.routes")(app);
 
 app.listen(3000, () => console.log("Listen on port 3000"));
