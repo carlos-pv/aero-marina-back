@@ -8,5 +8,6 @@ app.use(bodyparser.json());
 app.use(cors());
 
 require("./src/routes/amenity/amenity.routes")(app);
+require("./src/routes/usuario/usuario.routes")(app);
 
 app.listen(3000, () => console.log("Listen on port 3000"));
