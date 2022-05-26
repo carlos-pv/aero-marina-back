@@ -22,6 +22,14 @@ const UsuarioModel = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    usu_token: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    usu_password: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     tableName: "usuarios",

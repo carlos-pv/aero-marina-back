@@ -1,3 +1,4 @@
+const { request } = require("express");
 const usuarioService = require("../../services/usuario/usuario.service");
 
 const list = async (req, res) => {
@@ -50,4 +51,40 @@ const remove = async (req, res) => {
   });
 };
 
-module.exports = { list, getById, create, update, remove, listFilter };
+const login = async (req, res) => {
+  try {
+    const usuario = await usuarioService.login(req.body);
+
+    res.status(200).send({
+      success: true,
+      token: usuario.token,
+    });
+  } catch (error) {
+    res.status(200).send({
+      success: false,
+      error: error.message,
+    });
+  }
+};
+
+const logout = async (req, res) => {
+  
+  const usuario = await usuarioService.logout(req.usuarioId);
+  
+  res.status(200).send({
+    success: true,
+    usuario,
+  });
+
+};
+
+module.exports = {
+  list,
+  getById,
+  create,
+  update,
+  remove,
+  listFilter,
+  login,
+  logout,
+};

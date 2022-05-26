@@ -1,6 +1,9 @@
 const amenityService = require("../../services/amenity/amenity.service");
 
 const list = async (req, res) => {
+
+  console.log("El id del usuario que invoco es: ", req.usuarioId);
+
   const amenity = await amenityService.list(req.query.q);
   res.send({
     success: true,
