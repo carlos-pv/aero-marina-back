@@ -16,6 +16,44 @@ const list = async (query, pageStart = 1, pageLimit = 10) => {
   return productosArray;
 };
 
+const listMasVendidos = async(query, pageStart = 1, pageLimit = 10) =>{
+  let productosResults = await sequelize.query(
+    `SELECT *
+                                              FROM productos
+                                              WHERE pro_mas_vendido = 1
+                                              ORDER BY pro_nombre`,
+    {
+      replacements: {
+        q: query ? "%" + query.toUpperCase() + "%" : "%",
+      },
+      type: QueryTypes.SELECT,
+    }
+  );
+
+  console.log("productosResults", productosResults);
+
+  return productosResults;
+};
+
+const listDestacados = async(query, pageStart = 1, pageLimit = 10) =>{
+  let productosResults = await sequelize.query(
+    `SELECT *
+                                              FROM productos
+                                              WHERE pro_destacado = 1
+                                              ORDER BY pro_nombre`,
+    {
+      replacements: {
+        q: query ? "%" + query.toUpperCase() + "%" : "%",
+      },
+      type: QueryTypes.SELECT,
+    }
+  );
+
+  console.log("productosResults", productosResults);
+
+  return productosResults;
+};
+
 // Consulta en la Base de datos con filtro
 
 const listFilter = async (query, pageStart = 1, pageLimit = 10) => {
@@ -93,6 +131,8 @@ const remove = async (pro_codigo) => {
 
 module.exports = {
   list,
+  listMasVendidos,
+  listDestacados,
   listFilter,
   create,
   getById,

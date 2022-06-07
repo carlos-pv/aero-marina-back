@@ -1,13 +1,28 @@
 const productoService = require("../services/producto.service");
 
 const list = async (req, res) => {
-
   const data = await productoService.list(req.query.q);
   res.send({
     success: true,
     data,
   });
 };
+
+const listMasVendidos = async (req, res) => {
+  const data = await productoService.listMasVendidos(req.query.q);
+  res.send({
+    success: true,
+    data,
+  });
+};
+
+const listDestacados = async (req, res) =>{
+  const data = await productoService.listDestacados(req.query.q);
+  res.send({
+    success: true,
+    data,
+  });
+}
 
 const listFilter = async (req, res) => {
   const data = await productoService.listFilter(req.query.q);
@@ -34,11 +49,10 @@ const create = async (req, res) => {
       success: true,
       data,
     });
-    
   } catch (error) {
     res.status(202).send({
       success: false,
-      error: "No se pudo crear el producto"
+      error: "No se pudo crear el producto",
     });
   }
 };
@@ -59,4 +73,13 @@ const remove = async (req, res) => {
   });
 };
 
-module.exports = { list, getById, create, update, remove, listFilter };
+module.exports = {
+  list,
+  listMasVendidos,
+  listDestacados,
+  getById,
+  create,
+  update,
+  remove,
+  listFilter,
+};
