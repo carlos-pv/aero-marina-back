@@ -28,11 +28,19 @@ const getById = async (req, res) => {
 };
 
 const create = async (req, res) => {
-  const producto = await productoService.create(req.body);
-  res.status(200).send({
-    success: true,
-    producto,
-  });
+  try {
+    const producto = await productoService.create(req.body);
+    res.status(200).send({
+      success: true,
+      producto,
+    });
+    
+  } catch (error) {
+    res.status(202).send({
+      success: false,
+      error: "No se pudo crear el producto"
+    });
+  }
 };
 
 const update = async (req, res) => {
