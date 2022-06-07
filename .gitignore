@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 node_modules/
+=======
+/node_modules
+>>>>>>> origin/isaac
 node_modules/.package-lock.json
 node_modules/.bin/is-ci
 node_modules/.bin/mime

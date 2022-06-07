@@ -1,50 +1,50 @@
-const amenityService = require("../../services/amenity/amenity.service");
+const categoriaService = require("../services/categoria.service");
 
 const list = async (req, res) => {
-  const amenity = await amenityService.list(req.query.q);
+  const categoria = await categoriaService.list(req.query.q);
   res.send({
     success: true,
-    amenity,
+    categoria,
   });
 };
 
 const listFilter = async (req, res) => {
-  const amenity = await amenityService.listFilter(req.query.q);
+  const categoria = await categoriaService.listFilter(req.query.q);
   res.send({
     success: true,
-    amenity,
+    categoria,
   });
 };
 
 const getById = async (req, res) => {
-  const amenity = await amenityService.getById(req.params.id);
+  const categoria = await categoriaService.getById(req.params.id);
 
   const jsonResultado = req.query;
   jsonResultado["success"] = true;
-  jsonResultado["amenity"] = amenity;
+  jsonResultado["categoria"] = categoria;
 
   res.status(200).send(jsonResultado);
 };
 
 const create = async (req, res) => {
-  const amenity = await amenityService.create(req.body);
+  const categoria = await categoriaService.create(req.body);
   res.status(200).send({
     success: true,
-    amenity,
+    categoria,
   });
 };
 
 const update = async (req, res) => {
-  const amenity = await amenityService.update(req.body, req.params.id);
-  console.log("datos actualizacion", amenity);
+  const categoria = await categoriaService.update(req.body, req.params.id);
+  console.log("datos actualizacion", categoria);
   res.status(202).send({
     success: true,
-    amenity,
+    categoria,
   });
 };
 
 const remove = async (req, res) => {
-  const booleanValue = await amenityService.remove(req.params.id);
+  const booleanValue = await categoriaService.remove(req.params.id);
   res.status(202).send({
     success: booleanValue,
   });

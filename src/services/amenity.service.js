@@ -1,5 +1,5 @@
-const { AmenityModel } = require("../../models/amenity.model");
-const { sequelize } = require("../bd.service");
+const { AmenityModel } = require("../models/amenity.model");
+const { sequelize } = require("./bd.service");
 
 const { QueryTypes } = require("sequelize");
 

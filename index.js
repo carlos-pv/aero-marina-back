@@ -7,6 +7,9 @@ const app = express();
 app.use(bodyparser.json());
 app.use(cors());
 
-require("./src/routes/amenity/amenity.routes")(app);
+require("./src/routes/usuario.routes")(app);
+require("./src/routes/amenity.routes")(app);
+require("./src/routes/producto.routes")(app);
+require("./src/routes/categoria.routes")(app);
 
 app.listen(3000, () => console.log("Listen on port 3000"));
