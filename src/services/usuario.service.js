@@ -1,5 +1,5 @@
-const { UsuarioModel } = require("../../models/usuario.model");
-const { sequelize } = require("../bd.service");
+const { UsuarioModel } = require("../models/usuario.model");
+const { sequelize } = require("./bd.service");
 
 const { QueryTypes } = require("sequelize");
 

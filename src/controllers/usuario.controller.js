@@ -1,5 +1,5 @@
 const { request } = require("express");
-const usuarioService = require("../../services/usuario/usuario.service");
+const usuarioService = require("../services/usuario.service");
 
 const list = async (req, res) => {
   const usuario = await usuarioService.list(req.query.q);

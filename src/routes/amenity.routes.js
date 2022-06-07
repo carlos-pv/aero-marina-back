@@ -1,5 +1,5 @@
-const amenityController = require("../../controllers/amenity/amenity.controller");
-const authorizationMiddleware = require("../../middlewares/authorization.middleware.js");
+const amenityController = require("../controllers/amenity.controller");
+const authorizationMiddleware = require("../middlewares/authorization.middleware.js");
 
 module.exports = (app) => {
   app.get("/amenities", authorizationMiddleware.authorization, amenityController.list);
