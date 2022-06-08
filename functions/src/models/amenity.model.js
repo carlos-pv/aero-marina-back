@@ -1,30 +1,30 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../services/bd.service");
 
-const CategoriaModel = sequelize.define(
-  "Categoria",
+const AmenityModel = sequelize.define(
+  "Amenity",
   {
-    cat_codigo: {
+    ame_codigo: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    cat_descripcion: {
+    ame_nombre: {
       type: DataTypes.STRING,
-      allowNull: true,
+      allowNull: false,
     },
-    cat_imagen: {
+    ame_descripcion: {
       type: DataTypes.STRING,
       allowNull: true,
     },
   },
   {
-    tableName: "categorias",
+    tableName: "amenities",
     timestamps: false,
   }
 );
 
 module.exports = {
-  CategoriaModel,
+  AmenityModel,
 };

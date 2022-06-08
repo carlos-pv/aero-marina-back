@@ -1,30 +1,42 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../services/bd.service");
 
-const CategoriaModel = sequelize.define(
-  "Categoria",
+const UsuarioModel = sequelize.define(
+  "Usuario",
   {
-    cat_codigo: {
+    usu_codigo: {
       type: DataTypes.INTEGER,
       allowNull: false,
       primaryKey: true,
       autoIncrement: true,
     },
-    cat_descripcion: {
+    usu_nombre: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    usu_apellido: {
+      type: DataTypes.STRING,
+      allowNull: false,
+    },
+    usu_documento: {
       type: DataTypes.STRING,
       allowNull: true,
     },
-    cat_imagen: {
+    usu_token: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    usu_password: {
       type: DataTypes.STRING,
       allowNull: true,
     },
   },
   {
-    tableName: "categorias",
+    tableName: "usuarios",
     timestamps: false,
   }
 );
 
 module.exports = {
-  CategoriaModel,
+  UsuarioModel,
 };
