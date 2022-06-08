@@ -58,12 +58,21 @@ const create = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  const data = await productoService.update(req.body, req.params.id);
-  console.log("datos actualizacion", data);
-  res.status(202).send({
-    success: true,
-    data,
-  });
+  try {
+    const data = await productoService.update(req.body, req.params.id);
+    console.log("datos actualizacion", data);
+    res.status(200).send({
+      success: true,
+      data,
+    });
+    
+  } catch (error) {
+    res.status(202).send({
+      success: false,
+      error: "No se pudo actualizar el producto",
+    });
+  }
+  
 };
 
 const remove = async (req, res) => {
