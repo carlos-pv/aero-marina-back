@@ -1,45 +1,45 @@
 const categoriaService = require("../services/categoria.service");
 
 const list = async (req, res) => {
-  const categoria = await categoriaService.list(req.query.q);
+  const data = await categoriaService.list(req.query.q);
   res.send({
     success: true,
-    categoria,
+    data,
   });
 };
 
 const listFilter = async (req, res) => {
-  const categoria = await categoriaService.listFilter(req.query.q);
+  const data = await categoriaService.listFilter(req.query.q);
   res.send({
     success: true,
-    categoria,
+    data,
   });
 };
 
 const getById = async (req, res) => {
-  const categoria = await categoriaService.getById(req.params.id);
+  const data = await categoriaService.getById(req.params.id);
 
   const jsonResultado = req.query;
   jsonResultado["success"] = true;
-  jsonResultado["categoria"] = categoria;
+  jsonResultado["categoria"] = data;
 
   res.status(200).send(jsonResultado);
 };
 
 const create = async (req, res) => {
-  const categoria = await categoriaService.create(req.body);
+  const data = await categoriaService.create(req.body);
   res.status(200).send({
     success: true,
-    categoria,
+    data,
   });
 };
 
 const update = async (req, res) => {
-  const categoria = await categoriaService.update(req.body, req.params.id);
-  console.log("datos actualizacion", categoria);
+  const data = await categoriaService.update(req.body, req.params.id);
+  console.log("datos actualizacion", data);
   res.status(202).send({
     success: true,
-    categoria,
+    categodataria,
   });
 };
 

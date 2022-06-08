@@ -14,6 +14,10 @@ const CategoriaModel = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    cat_imagen: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
   },
   {
     tableName: "categorias",

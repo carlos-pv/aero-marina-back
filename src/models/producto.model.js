@@ -30,6 +30,19 @@ const ProductoModel = sequelize.define(
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+    pro_imagen: {
+      type: DataTypes.STRING,
+      allowNull: true,
+    },
+    pro_destacado: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
+    pro_mas_vendido: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    }
+    
   },
   {
     tableName: "productos",
