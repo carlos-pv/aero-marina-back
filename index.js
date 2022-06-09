@@ -8,7 +8,7 @@ app.use(bodyparser.json());
 app.use(cors());
 
 require("./src/routes/usuario.routes")(app);
-require("./src/routes/amenity.routes")(app);
+require("./src/routes/facility.routes")(app);
 require("./src/routes/producto.routes")(app);
 require("./src/routes/categoria.routes")(app);
 require("./src/routes/habitacion.routes")(app);
