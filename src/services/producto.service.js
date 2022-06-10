@@ -5,15 +5,20 @@ const { QueryTypes } = require("sequelize");
 
 // Consulta en la Base de datos
 const list = async (query, pageStart = 1, pageLimit = 10) => {
-  const productoModelResults = await ProductoModel.findAll();
-
-  const productosArray = new Array();
-  for (let i = 0; i < productoModelResults.length; i++) {
-    const productosResult = productoModelResults[i];
-    productosArray.push(productosResult.dataValues);
+  try {
+    const productoModelResults = await ProductoModel.findAll();
+  
+    const productosArray = new Array();
+    for (let i = 0; i < productoModelResults.length; i++) {
+      const productosResult = productoModelResults[i];
+      productosArray.push(productosResult.dataValues);
+    }
+  
+    return productosArray;
+    
+  } catch (error) {
+    error 
   }
-
-  return productosArray;
 };
 
 const listMasVendidos = async(query, pageStart = 1, pageLimit = 10) =>{
@@ -81,12 +86,17 @@ const listFilter = async (query, pageStart = 1, pageLimit = 10) => {
 // Buscar en la Base de datos por codigo
 
 const getById = async (codigo) => {
-  const productoModelResults = await ProductoModel.findByPk(codigo);
-
-  if (productoModelResults) {
-    return productoModelResults.dataValues;
-  } else {
-    return null;
+  try {
+    
+    const productoModelResults = await ProductoModel.findByPk(codigo);
+    
+    if (productoModelResults) {
+      return productoModelResults.dataValues;
+    } else {
+      return null;
+    }
+  } catch (error) {
+    error
   }
 };
 
