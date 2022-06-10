@@ -34,12 +34,11 @@ const listFilter = async (req, res) => {
 
 const getById = async (req, res) => {
   const data = await productoService.getById(req.params.id);
-
-  const jsonResultado = req.query;
-  jsonResultado["success"] = true;
-  jsonResultado["producto"] = data;
-
-  res.status(200).send(jsonResultado);
+  //jsonResultado["success"] = true;
+  res.status(200).send({
+    success: true,
+    data
+  });
 };
 
 const create = async (req, res) => {
