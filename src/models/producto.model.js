@@ -41,6 +41,10 @@ const ProductoModel = sequelize.define(
     pro_mas_vendido: {
       type: DataTypes.INTEGER,
       allowNull: true,
+    },
+    pro_existencias: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
     }
     
   },
