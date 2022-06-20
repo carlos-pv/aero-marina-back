@@ -4,7 +4,7 @@ const { sequelize } = require("./bd.service");
 const { QueryTypes } = require("sequelize");
 
 // Consulta en la Base de datos
-const list = async (query, pageStart = 1, pageLimit = 10) => {
+/* const list = async (query, pageStart = 1, pageLimit = 10) => {
   try {
     const productoModelResults = await ProductoModel.findAll();
   
@@ -19,8 +19,23 @@ const list = async (query, pageStart = 1, pageLimit = 10) => {
   } catch (error) {
     error 
   }
-};
+}; */
+const list = async (query, pageStart = 1, pageLimit = 10) => {
+  try {
+    let sql = 'SELECT * FROM productos p INNER JOIN categorias c ON p.pro_categoria = c.cat_codigo'
 
+    const productoModelResults = await sequelize.query(sql,
+      {
+        type: QueryTypes.SELECT,
+      }
+    );
+ 
+    return productoModelResults;
+    
+  } catch (error) {
+    error 
+  }
+};
 const listMasVendidos = async(query, pageStart = 1, pageLimit = 10) =>{
   let productosResults = await sequelize.query(
     `SELECT *
