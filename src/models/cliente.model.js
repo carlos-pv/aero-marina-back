@@ -1,5 +1,5 @@
 const { DataTypes } = require("sequelize");
-const { sequelize } = require("../services/bd.service");
+const { sequelize, Sequelize } = require("../services/bd.service");
 
 const CURRENT_TIMESTAMP = Date.now();
 
@@ -18,9 +18,9 @@ const ClienteModel = sequelize.define(
       allowNull: true,
     },  
     cli_fecha_creacion: {
-      type: DataTypes.STRING,
+      type: Sequelize.DATEONLY,
       allowNull: false,
-      defaultValue: CURRENT_TIMESTAMP
+      defaultValue: Sequelize.fn('now')
     },  
     cli_persona_id: {
       type: DataTypes.INTEGER,
