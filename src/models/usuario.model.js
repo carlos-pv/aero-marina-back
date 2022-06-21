@@ -10,18 +10,6 @@ const UsuarioModel = sequelize.define(
       primaryKey: true,
       autoIncrement: true,
     },
-    usu_nombre: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    usu_apellido: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    usu_documento: {
-      type: DataTypes.STRING,
-      allowNull: true,
-    },
     usu_token: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -30,9 +18,13 @@ const UsuarioModel = sequelize.define(
       type: DataTypes.STRING,
       allowNull: true,
     },
+    usu_persona_id: {
+      type: DataTypes.INTEGER,
+      allowNull: true,
+    },
   },
   {
-    tableName: "usuarios",
+    tableName: "personas_usuarios",
     timestamps: false,
   }
 );

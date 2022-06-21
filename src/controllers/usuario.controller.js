@@ -2,45 +2,45 @@ const { request } = require("express");
 const usuarioService = require("../services/usuario.service");
 
 const list = async (req, res) => {
-  const usuario = await usuarioService.list(req.query.q);
+  const data = await usuarioService.list(req.query.q);
   res.send({
     success: true,
-    usuario,
+    data,
   });
 };
 
 const listFilter = async (req, res) => {
-  const usuario = await usuarioService.listFilter(req.query.q);
+  const data = await usuarioService.listFilter(req.query.q);
   res.send({
     success: true,
-    usuario,
+    data,
   });
 };
 
 const getById = async (req, res) => {
-  const usuario = await usuarioService.getById(req.params.id);
+  const data = await usuarioService.getById(req.params.id);
 
   const jsonResultado = req.query;
   jsonResultado["success"] = true;
-  jsonResultado["usuario"] = usuario;
+  jsonResultado["usuario"] = data;
 
   res.status(200).send(jsonResultado);
 };
 
 const create = async (req, res) => {
-  const usuario = await usuarioService.create(req.body);
+  const data = await usuarioService.create(req.body);
   res.status(200).send({
     success: true,
-    usuario,
+    data,
   });
 };
 
 const update = async (req, res) => {
-  const usuario = await usuarioService.update(req.body, req.params.id);
-  console.log("datos actualizacion", usuario);
+  const data = await usuarioService.update(req.body, req.params.id);
+  console.log("datos actualizacion", data);
   res.status(202).send({
     success: true,
-    usuario,
+    data,
   });
 };
 
@@ -51,32 +51,32 @@ const remove = async (req, res) => {
   });
 };
 
-const login = async (req, res) => {
-  try {
-    const usuario = await usuarioService.login(req.body);
+// const login = async (req, res) => {
+//   try {
+//     const data = await usuarioService.login(req.body);
 
-    res.status(200).send({
-      success: true,
-      token: usuario.token,
-    });
-  } catch (error) {
-    res.status(200).send({
-      success: false,
-      error: error.message,
-    });
-  }
-};
+//     res.status(200).send({
+//       success: true,
+//       token: data.token,
+//     });
+//   } catch (error) {
+//     res.status(200).send({
+//       success: false,
+//       error: error.message,
+//     });
+//   }
+// };
 
-const logout = async (req, res) => {
+// const logout = async (req, res) => {
   
-  const usuario = await usuarioService.logout(req.usuarioId);
+//   const data = await usuarioService.logout(req.usuarioId);
   
-  res.status(200).send({
-    success: true,
-    usuario,
-  });
+//   res.status(200).send({
+//     success: true,
+//     data,
+//   });
 
-};
+// };
 
 module.exports = {
   list,
@@ -84,7 +84,5 @@ module.exports = {
   create,
   update,
   remove,
-  listFilter,
-  login,
-  logout,
+  listFilter
 };
