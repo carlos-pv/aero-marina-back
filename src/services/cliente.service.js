@@ -8,15 +8,19 @@ const { request } = require("express");
 
 // Consulta en la Base de datos
 const list = async (query, pageStart = 1, pageLimit = 10) => {
-  const clienteModelResults = await ClienteModel.findAll();
+  // const clienteModelResults = await ClienteModel.findAll();
 
-  const clientesArray = new Array();
-  for (let i = 0; i < clienteModelResults.length; i++) {
-    const clientesResult = clienteModelResults[i];
-    clientesArray.push(clientesResult.dataValues);
-  }
+  // const clientesArray = new Array();
+  // for (let i = 0; i < clienteModelResults.length; i++) {
+  //   const clientesResult = clienteModelResults[i];
+  //   clientesArray.push(clientesResult.dataValues);
+  // }
 
-  return clientesArray;
+  // return clientesArray;
+  let clientesResult = await sequelize.query(
+    `SELECT * FROM public.personas p INNER JOIN personas_clientes pc ON p.per_codigo = pc.cli_codigo`);
+    return clientesResult;
+
 };
 
 // Consulta en la Base de datos con filtro
