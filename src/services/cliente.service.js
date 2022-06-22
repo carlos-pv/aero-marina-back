@@ -30,6 +30,7 @@ const listFilter = async (query, pageStart = 1, pageLimit = 10) => {
     `SELECT * FROM personas_clientes pcl INNER JOIN personas p ON pcl.cli_codigo = p.per_codigo
                                               WHERE UPPER (per_nombre) LIKE :q
                                               OR UPPER (per_apellido) LIKE :q
+                                              OR UPPER (per_documento) LIKE :q
                                               ORDER BY per_nombre`,
     {
       replacements: {
