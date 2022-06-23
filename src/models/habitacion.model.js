@@ -29,6 +29,10 @@ const HabitacionModel = sequelize.define(
     hab_numero: {
       type: DataTypes.INTEGER,
       allowNull: true,
+    },
+    hab_estado: {
+      type: DataTypes.STRING,
+      allowNull: true,
     },    
   },
   {

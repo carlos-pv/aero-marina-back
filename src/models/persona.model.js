@@ -1,8 +1,6 @@
 const { DataTypes } = require("sequelize");
 const { sequelize } = require("../services/bd.service");
 
-const CURRENT_TIMESTAMP = Date.now();
-
 const PersonaModel = sequelize.define(
   "Persona",
   {
@@ -35,11 +33,6 @@ const PersonaModel = sequelize.define(
     per_email: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    per_fecha_creacion: {
-      type: DataTypes.DATE,
-      allowNull: false,
-      defaultValue: CURRENT_TIMESTAMP
     },
   },
   {
