@@ -1,7 +1,8 @@
-const facilitieservice = require("../services/facility.service");
+const amenityService = require("../services/amenity.service");
 
 const list = async (req, res) => {
-  const data = await facilitieservice.list(req.query.q);
+  console.log(req);
+  const data = await amenityService.list();
   res.send({
     success: true,
     data,
@@ -9,7 +10,7 @@ const list = async (req, res) => {
 };
 
 // const listMasVendidos = async (req, res) => {
-//   const data = await facilitieservice.listMasVendidos(req.query.q);
+//   const data = await amenityService.listMasVendidos(req.query.q);
 //   res.send({
 //     success: true,
 //     data,
@@ -17,7 +18,7 @@ const list = async (req, res) => {
 // };
 
 // const listDestacados = async (req, res) =>{
-//   const data = await facilitieservice.listDestacados(req.query.q);
+//   const data = await amenityService.listDestacados(req.query.q);
 //   res.send({
 //     success: true,
 //     data,
@@ -25,7 +26,7 @@ const list = async (req, res) => {
 // }
 
 const listFilter = async (req, res) => {
-  const data = await facilitieservice.listFilter(req.query.q);
+  const data = await amenityService.listFilter(req.query.q);
   res.send({
     success: true,
     data,
@@ -33,18 +34,18 @@ const listFilter = async (req, res) => {
 };
 
 const getById = async (req, res) => {
-  const data = await facilitieservice.getById(req.params.id);
+  const data = await amenityService.getById(req.params.id);
 
   const jsonResultado = req.query;
   jsonResultado["success"] = true;
-  jsonResultado["facility"] = data;
+  jsonResultado["amenity"] = data;
 
   res.status(200).send(jsonResultado);
 };
 
 const create = async (req, res) => {
   try {
-    const data = await facilitieservice.create(req.body);
+    const data = await amenityService.create(req.body);
     res.status(200).send({
       success: true,
       data,
@@ -52,14 +53,14 @@ const create = async (req, res) => {
   } catch (error) {
     res.status(202).send({
       success: false,
-      error: "No se pudo crear la facility",
+      error: "No se pudo crear la amenity",
     });
   }
 };
 
 const update = async (req, res) => {
   try {
-    const data = await facilitieservice.update(req.body, req.params.id);
+    const data = await amenityService.update(req.body, req.params.id);
     console.log("datos actualizacion", data);
     res.status(200).send({
       success: true,
@@ -69,14 +70,14 @@ const update = async (req, res) => {
   } catch (error) {
     res.status(202).send({
       success: false,
-      error: "No se pudo actualizar la facility",
+      error: "No se pudo actualizar la amenity",
     });
     
   }
 };
 
 const remove = async (req, res) => {
-  const booleanValue = await facilitieservice.remove(req.params.id);
+  const booleanValue = await amenityService.remove(req.params.id);
   res.status(200).send({
     success: booleanValue,
   });
@@ -84,8 +85,6 @@ const remove = async (req, res) => {
 
 module.exports = {
   list,
-  // listMasVendidos,
-  // listDestacados,
   getById,
   create,
   update,
