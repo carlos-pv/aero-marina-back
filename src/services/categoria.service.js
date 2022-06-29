@@ -32,10 +32,7 @@ const listFilter = async (query, pageStart = 1, pageLimit = 10) => {
     }
   );
 
-  //categoriasResults = (categoriasResults && categoriasResults [0]) ? categoriasResults[0] : [];
-
   console.log("categoriasResults", categoriasResults);
-
   return categoriasResults;
 };
 
@@ -54,26 +51,26 @@ const getById = async (codigo) => {
 // Guardar en la Base de datos
 const create = async (data) => {
   console.log("create data", data);
-
+try {
   const categoriaModelResults = await CategoriaModel.create(data);
   return categoriaModelResults.dataValues;
-  // if (categoriaModelResults) {
-  //   return categoriaModelResults.dataValues;
-  // } else {
-  //   return null;
-  // }
+  
+} catch (error) {
+  error  
+}
+
 };
 
 // Actualizar en la Base de datos
 
 const update = async (data, id) => {
-  const categoriaModelCount = await CategoriaModel.update(data, {
-    where: {
-      cat_codigo: id,
-    },
-  });
-  console.log("update data", categoriaModelCount.datavalues);
-  return data;
+    const categoriaModelCount = await CategoriaModel.update(data, {
+      where: {
+        cat_codigo: id,
+      },
+    });
+    console.log("update data", data);
+    return data;
 };
 
 // Eliminar en la Base de datos

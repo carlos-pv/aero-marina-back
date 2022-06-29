@@ -35,12 +35,18 @@ const create = async (req, res) => {
 };
 
 const update = async (req, res) => {
-  const data = await categoriaService.update(req.body, req.params.id);
-  console.log("datos actualizacion", data);
-  res.status(202).send({
-    success: true,
-    categodataria,
-  });
+  console.log("datos actualizacion BODY", req.body);
+  console.log("datos actualizacion PARAMS", req.params.id);
+  try {
+    const data = await categoriaService.update(req.body, req.params.id);
+    res.status(202).send({
+      success: true,
+      data,
+    });
+  } catch (error) {
+  console.log("El error es::",error);  
+  }
+  
 };
 
 const remove = async (req, res) => {
