@@ -44,9 +44,8 @@ const update = async (req, res) => {
       data,
     });
   } catch (error) {
-  console.log("El error es::",error);  
+    console.log("El error es::", error);
   }
-  
 };
 
 const remove = async (req, res) => {
@@ -56,4 +55,11 @@ const remove = async (req, res) => {
   });
 };
 
-module.exports = { list, getById, create, update, remove, listFilter };
+module.exports = {
+  list,
+  getById,
+  create,
+  update,
+  remove,
+  listFilter,
+};

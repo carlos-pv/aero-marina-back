@@ -19,7 +19,7 @@ const HabitacionModel = sequelize.define(
       allowNull: true,
     },
     hab_imagen: {
-      type: DataTypes.STRING,
+      type: DataTypes.JSON,
       allowNull: true,
     },
     hab_precio: {

@@ -16,46 +16,7 @@ const list = async (query, pageStart = 1, pageLimit = 10) => {
   return habitacionesArray;
 };
 
-// const listMasVendidos = async(query, pageStart = 1, pageLimit = 10) =>{
-//   let habitacionesResults = await sequelize.query(
-//     `SELECT *
-//                                               FROM habitaciones
-//                                               WHERE pro_mas_vendido = 1
-//                                               ORDER BY pro_nombre`,
-//     {
-//       replacements: {
-//         q: query ? "%" + query.toUpperCase() + "%" : "%",
-//       },
-//       type: QueryTypes.SELECT,
-//     }
-//   );
-
-//   console.log("habitacionesResults", habitacionesResults);
-
-//   return habitacionesResults;
-// };
-
-// const listDestacados = async(query, pageStart = 1, pageLimit = 10) =>{
-//   let habitacionesResults = await sequelize.query(
-//     `SELECT *
-//                                               FROM habitaciones
-//                                               WHERE pro_destacado = 1
-//                                               ORDER BY pro_nombre`,
-//     {
-//       replacements: {
-//         q: query ? "%" + query.toUpperCase() + "%" : "%",
-//       },
-//       type: QueryTypes.SELECT,
-//     }
-//   );
-
-//   console.log("habitacionesResults", habitacionesResults);
-
-//   return habitacionesResults;
-// };
-
 // Consulta en la Base de datos con filtro
-
 const listFilter = async (query, pageStart = 1, pageLimit = 10) => {
   let habitacionesResults = await sequelize.query(
     `SELECT *
@@ -72,7 +33,6 @@ const listFilter = async (query, pageStart = 1, pageLimit = 10) => {
     }
   );
 
-  //habitacionesResults = (habitacionesResults && habitacionesResults [0]) ? habitacionesResults[0] : [];
 
   console.log("habitacionesResults", habitacionesResults);
 
@@ -80,7 +40,6 @@ const listFilter = async (query, pageStart = 1, pageLimit = 10) => {
 };
 
 // Buscar en la Base de datos por codigo
-
 const getById = async (codigo) => {
   const habitacionModelResults = await HabitacionModel.findByPk(codigo);
 
@@ -94,21 +53,22 @@ const getById = async (codigo) => {
 // Guardar en la Base de datos
 const create = async (data) => {
   console.log("create data", data);
-
-  const habitacionModelResults = await HabitacionModel.create(data);
-  return habitacionModelResults.dataValues;
-
+  try {
+    const habitacionModelResults = await HabitacionModel.create(data);
+    return habitacionModelResults.dataValues;
+  }catch (error) {
+    error
+  }
 };
 
 // Actualizar en la Base de datos
-
 const update = async (data, id) => {
   const habitacionModelCount = await HabitacionModel.update(data, {
     where: {
       hab_codigo: id,
     },
   });
-  console.log("update data", habitacionModelCount.datavalues);
+  console.log("update data", data);
   return data;
 };
 
@@ -132,8 +92,6 @@ const remove = async (hab_codigo) => {
 
 module.exports = {
   list,
-  // listMasVendidos,
-  // listDestacados,
   listFilter,
   create,
   getById,

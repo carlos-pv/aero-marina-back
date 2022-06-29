@@ -51,26 +51,23 @@ const getById = async (codigo) => {
 // Guardar en la Base de datos
 const create = async (data) => {
   console.log("create data", data);
-try {
-  const categoriaModelResults = await CategoriaModel.create(data);
-  return categoriaModelResults.dataValues;
-  
-} catch (error) {
-  error  
-}
-
+  try {
+    const categoriaModelResults = await CategoriaModel.create(data);
+    return categoriaModelResults.dataValues;
+  } catch (error) {
+    error;
+  }
 };
 
 // Actualizar en la Base de datos
-
 const update = async (data, id) => {
-    const categoriaModelCount = await CategoriaModel.update(data, {
-      where: {
-        cat_codigo: id,
-      },
-    });
-    console.log("update data", data);
-    return data;
+  const categoriaModelCount = await CategoriaModel.update(data, {
+    where: {
+      cat_codigo: id,
+    },
+  });
+  console.log("update data", data);
+  return data;
 };
 
 // Eliminar en la Base de datos
